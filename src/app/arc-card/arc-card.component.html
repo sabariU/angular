@@ -1,0 +1,54 @@
+<div class="parent-container">
+    <div class="parent-title">ARC Projects</div>
+    <div class="arc-container">
+        <div class="arc-column">
+            <div class="parent-title">{{totalArc}}</div>
+            <div class="small-title">Total ARC Projects</div>
+            <br>
+            <br>
+            <div *ngIf="filterFlagOn">
+                <div class="parent-title">{{totalFilteredArc}}</div>
+                <div class="small-title">Total ARC Projects for</div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>LOBT: {{filterParams.selectedLobt}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Application Code: {{filterParams.selectedApplication}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Created From: {{filterParams.selectedStartDate}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Created Until: {{filterParams.selectedEndDate}}</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="arc-column">
+            <div class="small-title">Total</div>
+            <div echarts [options]="arcStatusStatOptions" class="demo-chart" style="height: 500px;"></div>
+        </div>
+        <div class="arc-column">
+            <div class="arc-column3-row">
+
+                <div class="sub-card">
+                    <div class="small-title">Online</div>
+                    <div echarts [options]="arcApprovalTypeOnlineStatOptions" class="demo-chart" style="height: 250px;">
+                    </div>
+                </div>
+
+            </div>
+            <div class="arc-column3-row">
+                <div class="sub-card">
+                    <div class="small-title">Offline</div>
+                    <div echarts [options]="arcApprovalTypeOfflineStatOptions" class="demo-chart"
+                        style="height: 250px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

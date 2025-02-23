@@ -1,0 +1,44 @@
+<div class="parent-container">
+    <div class="parent-title">Deviation Items</div>
+    <div class="arc-container">
+        <div class="arc-column">
+            <div class="parent-title">{{totalDeviation}}</div>
+            <div class="small-title">Deviation Items</div>
+            <br>
+            <br>
+            <div class="parent-title">{{totalOverdue}}</div>
+            <div class="small-title">Overdue</div>
+            <br>
+            <br>
+            <div *ngIf="filterFlagOn">
+                <div class="parent-title">{{totalFiltered}}</div>
+                <div class="small-title">Total Deviation Items for</div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>LOBT: {{filterParams.selectedLobt}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Application Code: {{filterParams.selectedApplication}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Created From: {{filterParams.selectedStartDate}}</label>
+                </div>
+                <div *ngIf="filterParams.selectedLobt">
+                    <label>Created Until: {{filterParams.selectedEndDate}}</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="arc-column">
+            <div class="small-title">Status</div>
+            <div echarts [options]="deviationStatusStatOptions" class="demo-chart" style="height: 400px;"></div>
+        </div>
+
+        <div class="arc-column">
+            <div class="small-title">Ageing</div>
+            <div echarts [options]="deviationAgeingStatOptions" class="demo-chart" style="height: 400px;"></div>
+        </div>
+
+    </div>
+
+</div>

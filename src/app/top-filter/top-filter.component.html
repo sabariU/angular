@@ -1,0 +1,27 @@
+<div class="filter-container">
+    <div class="filter-item">
+        <label for="lobt">LOBT:</label>
+        <select id="lobt" [(ngModel)]="filterParams.selectedLobt" (change)="onFilterChange()">
+            <option *ngFor="let lobt of lobtOptions" [value]="lobt">{{ lobt }}</option>
+        </select>
+    </div>
+    <div class="filter-item">
+        <label for="application">Application:</label>
+        <select id="application" [(ngModel)]="filterParams.selectedApplication" (change)="onFilterChange()">
+            <option *ngFor="let app of applicationOptions" [value]="app">{{ app }}</option>
+        </select>
+    </div>
+    <div class="filter-item">
+        <label for="dateRange">From</label>
+        <select id="dateRange" [(ngModel)]="filterParams.selectedStartDate" (change)="onFilterChange()">
+            <option *ngFor="let range of startDate" [value]="range">{{ range }}</option>
+        </select>
+        
+    </div>
+    <div class="filter-item">
+        <label for="dateRange">To</label>
+        <select id="dateRange" [(ngModel)]="filterParams.selectedEndDate" (change)="onFilterChange()">
+            <option *ngFor="let range of endDate" [value]="range">{{ range }}</option>
+        </select>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+.parent-container {
+    width: 1152px;
+    height: 500px;
+    border-width: 1px;
+    border-radius: 8px;
+    border: 1px solid #ccc; // Add border to make it visible
+    padding: 20px; // Add padding to the parent container
+}
+
+.parent-title {
+    font-family: 'Open Sans', sans-serif; // Set the font to Open Sans
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px; // Add margin to separate the title from the chart container
+}
+
+.arc-container {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+
+}
+
+.arc-column {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 10px 6px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #eee;
+}
+
+.chart-title {
+    font-family: 'Open Sans', sans-serif; // Set the font to Open Sans
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; // Reduce the margin to decrease the space between the title and the pie chart
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.small-title {
+    font-family: 'Open Sans', sans-serif; // Set the font to Open Sans
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+
+.arc-column3-row {
+    display: flex;
+    gap: 10px;
+}
+
+.sub-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 10px 6px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #eee; // Change to a lighter border color
+}
