@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  title: DORA Metrics and Trends API
+  description: API to fetch DORA metrics and trends hosted by EA-SRE
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+paths:
+  /dora/metrics-and-trends:
+    get:
+      summary: Get DORA Metrics and Trends
+      description: Fetch DORA metrics and trends for a given date range and granularity.
+      operationId: getDoraMetricsAndTrends
+      parameters:
+        - name: startDate
+          in: query
+          description: Start date for the data (e.g., 2023-01-01).
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: End date for the data (e.g., 2023-12-31).
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: granularity
+          in: query
+          description: Granularity of the data (e.g., monthly).
+          required: true
+          schema:
+            type: string
+            enum: [daily, weekly, monthly, quarterly, yearly]
+      responses:
+        '200':
+          description: Successful response with DORA metrics and trends.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metrics:
+                    type: object
+                    properties:
+                      medianDeploymentDays:
+                        type: object
+                        properties:
+                          value:
+                            type: number
+                            example: 3.5
+                          description:
+                            type: string
+                            example: "Median number of days between production deployments."
+                          type:
+                            type: string
+                            example: "days"
+                      failureRate:
+                        type: object
+                        properties:
+                          value:
+                            type: number
+                            example: 15.0
+                          description:
+                            type: string
+                            example: "Percentage of deployments that resulted in failures."
+                          type:
+                            type: string
+                            example: "percent"
+                      mttr:
+                        type: object
+                        properties:
+                          value:
+                            type: number
+                            example: 2.5
+                          description:
+                            type: string
+                            example: "Mean Time to Recovery (MTTR) per incident."
+                          type:
+                            type: string
+                            example: "hours"
+                      medianLeadTime:
+                        type: object
+                        properties:
+                          value:
+                            type: number
+                            example: 5.0
+                          description:
+                            type: string
+                            example: "Median lead time from commit to production."
+                          type:
+                            type: string
+                            example: "days"
+                  trends:
+                    type: object
+                    properties:
+                      deploymentFrequency:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: "Median deployment frequency trends over time."
+                          type:
+                            type: string
+                            example: "days"
+                          data:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                                  example: "2023-01"
+                                value:
+                                  type: number
+                                  example: 3.0
+                      failureRate:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: "Failure rate trends over time."
+                          type:
+                            type: string
+                            example: "percent"
+                          data:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                                  example: "2023-01"
+                                value:
+                                  type: number
+                                  example: 10.0
+                      incidentsCount:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: "Trends in the number of incidents over time."
+                          type:
+                            type: string
+                            example: "count"
+                          data:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                                  example: "2023-01"
+                                value:
+                                  type: number
+                                  example: 5
+                      leadTime:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: "Trends in lead time to production over time."
+                          type:
+                            type: string
+                            example: "days"
+                          data:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                                  example: "2023-01"
+                                value:
+                                  type: number
+                                  example: 5.0
+        '400':
+          description: Bad request. Invalid query parameters.
+        '500':
+          description: Internal server error.
